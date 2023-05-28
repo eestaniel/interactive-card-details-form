@@ -237,7 +237,7 @@ input::placeholder {
     color: hsl(240deg 2% 82%);
 }
 
-@media (min-width: 400px) {
+@media (min-width: 968px) {
     .grid-container {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -276,6 +276,11 @@ input::placeholder {
         transform: translate(2rem, 4rem);
     }
 
+    .form__card-front__logo {
+        height: 4.5rem;
+        transform: translate(1.835rem, 1.5rem);
+    }
+
     .form__card-front__number {
         font-size: 2rem;
         left: 1vw;
@@ -285,6 +290,7 @@ input::placeholder {
 
     .form__card-front__name {
         font-size: 1.125rem;
+        left: 1.835rem;
     }
 
 
