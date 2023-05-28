@@ -1,0 +1,240 @@
+
+body {
+    height: 100vh;
+    width: 100vw;
+}
+
+.form__images {
+    width: auto;
+    height: 240px;
+    background-color: gray;
+    position: relative;
+}
+
+.form__bg {
+    background: url("../assets/images/bg-main-mobile.png") no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.form__card-back {
+    background: url("../assets/images/bg-card-back.png") no-repeat;
+    height: 156px;
+    width: 285px;
+    background-size: cover;
+    position: absolute;
+    top: 2rem;
+    right: 1rem;
+}
+
+.form__card-back__cvc {
+    position: absolute;
+    transform: translate(14rem, 4.125rem);
+    color: hsl(212deg 27% 88%);
+}
+
+.form__card-front {
+    background: url("../assets/images/bg-card-front.png") no-repeat;
+    height: 156px;
+    width: 285px;
+    background-size: cover;
+    position: absolute;
+    top: 7.5rem;
+    left: 4.5vw;
+}
+
+.form__card-front__logo {
+    background: url("../assets/images/card-logo.svg") no-repeat;
+    height: 3.5rem;
+    aspect-ratio: 1 / 1;
+    background-size: contain;
+    position: absolute;
+    transform: translate(1.125rem, 1rem);
+}
+
+.form__card-front__number {
+    position: absolute;
+    bottom: 2.635rem;
+    font-size: 1.25rem;
+    padding-left: 1.125rem;
+    letter-spacing: 3px;
+    color: hsl(291deg 100% 97%);
+}
+
+.form__card-front__name {
+    position: absolute;
+    bottom: 0.75rem;
+    left: 1.125rem;
+    color: hsl(291deg 100% 97%);
+}
+
+.form__card-front__date {
+    position: absolute;
+    bottom: 0.75rem;
+    right: 1.25rem;
+    color: hsl(290deg 45% 76%);
+    font-size: 0.75rem;
+}
+
+
+.form-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, min-content);
+    place-items: center;
+    margin-top: 16vh;
+    margin-inline: 1.5rem;
+    gap: 2.75rem;
+}
+
+.form__name input,
+.form__number input {
+    display: grid;
+    place-self: center;
+    max-width: 378px;
+    width: 87.5vw;
+    color: hsl(274deg 23% 20%);
+    font-size: 1.125rem;
+    border: 1px solid hsl(263deg 3% 81%);
+    border-radius: .5rem;
+    padding: 0.5rem 1rem;
+;
+}
+
+.form__name input:hover,
+.form__number input:hover,
+.form__date input:hover,
+.form__cvc input:hover,
+.button {
+    cursor: pointer;
+}
+
+.form__name::before {
+    content: "CARDHOLDER NAME";
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    color: hsl(278deg 24% 15%);
+    font-weight: 700;
+    position: absolute;
+    transform: translate(0, -1.5rem);
+}
+
+.form__number::before {
+    content: "CARD NUMBER";
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    color: hsl(278deg 24% 15%);
+    font-weight: 700;
+    position: absolute;
+    transform: translate(0, -1.5rem);
+}
+
+
+.form__group {
+    max-width: 378px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    font-size: 1.125rem;
+    position: relative;
+}
+
+.form__date {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
+.form__date::before {
+    content: "EXP. DATE (MM/YY)";
+    position: absolute;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    color: hsl(278deg 24% 15%);
+    font-weight: 700;
+    transform: translate(0, -1.5rem);
+}
+
+.form__month,
+.form__year {
+    max-width: 76px;
+    width: 100%;
+    padding: 0.475rem 1rem;
+    color: hsl(274deg 23% 20%);
+    border-radius: .5rem;
+    border: 1px solid hsl(240deg 2% 82%);
+
+}
+
+.form__cvc input{
+    max-width: 190px;
+    width: 96%;
+    gap: 0.75rem;
+    border-radius: 0.5rem;
+    border: 1px solid hsl(240deg 2% 82%);
+    color: hsl(274deg 23% 20%);
+    padding: 0.475rem 1rem;
+    margin-left: 0.5rem;
+
+}
+
+.form__cvc::before {
+    content: "CVC";
+    position: absolute;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    color: hsl(278deg 24% 15%);
+    font-weight: 700;
+    transform: translate(0, -1.5rem);
+}
+
+.button {
+    max-width: 378px;
+    width: 100%;
+    padding: .8125rem;
+    font-size: 1.375rem;
+    border-radius: .5rem;
+    border: none;
+    color: white;
+    background-color: hsl(279deg 70% 11%);
+}
+
+.button:hover {
+    background-color: hsl(279deg 70% 31%);
+}
+
+.error {
+
+}
+
+.error::after {
+    content: attr(error-after);
+    position: relative;
+    color: red;
+    font-size: 0.875rem;
+
+}
+
+
+.error-group::after {
+    content: attr(error-after);
+    position: absolute;
+    color: red;
+    font-size: 0.875rem;
+    transform: translateY(3rem);
+}
+
+.error-cvc::after {
+    content: attr(error-after);
+    position: absolute;
+    color: red;
+    font-size: 0.875rem;
+    right:27%;
+    bottom: -55%;
+}
+
+input::placeholder {
+    color: hsl(240deg 2% 82%);
+}
+
