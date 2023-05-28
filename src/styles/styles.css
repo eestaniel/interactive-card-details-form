@@ -97,8 +97,7 @@ body {
     font-size: 1.125rem;
     border: 1px solid hsl(263deg 3% 81%);
     border-radius: .5rem;
-    padding: 0.5rem 1rem;
-;
+    padding: 0.5rem 1rem;;
 }
 
 .form__name input:hover,
@@ -167,7 +166,7 @@ body {
 
 }
 
-.form__cvc input{
+.form__cvc input {
     max-width: 190px;
     width: 96%;
     gap: 0.75rem;
@@ -230,7 +229,7 @@ body {
     position: absolute;
     color: red;
     font-size: 0.875rem;
-    right:27%;
+    right: 27%;
     bottom: -55%;
 }
 
@@ -238,3 +237,68 @@ input::placeholder {
     color: hsl(240deg 2% 82%);
 }
 
+@media (min-width: 400px) {
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+        "form__images form-container";
+    }
+
+    .form__images {
+        grid-area: form__images;
+        height: 100vh;
+        max-width: 483px;
+    }
+
+    .form__bg {
+        background-image: url("../assets/images/bg-main-desktop.png");
+        background-repeat: no-repeat;
+    }
+
+    .form__card-back {
+        width: 448px;
+        height: 246px;
+        background-size: contain;
+        transform: translate(10rem, 27.25rem);
+    }
+
+    .form__card-back__cvc {
+        transform: translate(22rem, 7rem);
+        font-size: 1.125rem;
+
+    }
+
+    .form__card-front {
+        width: 448px;
+        height: 246px;
+        background-size: contain;
+        transform: translate(2rem, 4rem);
+    }
+
+    .form__card-front__number {
+        font-size: 2rem;
+        left: 1vw;
+        word-spacing: 5px;
+        bottom: 7vh
+    }
+
+    .form__card-front__name {
+        font-size: 1.125rem;
+    }
+
+
+    /* Card CVC change this*/
+    .form__card-front__date {
+        font-size: 1.125rem;
+    }
+
+    .form-container {
+        grid-area: form-container;
+        place-self: start;
+        place-content: center;
+        margin-top: auto;
+        margin-bottom: auto;
+        z-index: 10;
+    }
+}

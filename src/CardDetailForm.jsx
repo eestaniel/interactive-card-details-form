@@ -66,13 +66,13 @@ const CardDetailForm = () => {
                 input.parentElement.classList.remove('error');
                 input.style.borderColor = '#ccc';
                 input.parentElement.removeAttribute('error-after');
-             
+
             }
         });
     }
 
     return (
-        <>
+        <div className={'grid-container'}>
             <div className="form__images">
                 <div className="form__bg"></div>
                 <div className="form__card-back" id={'card-1'}>
@@ -106,7 +106,7 @@ const CardDetailForm = () => {
                 </div>
                 <button className="button" onClick={handleClick}>Confirm</button>
             </form>
-        </>
+        </div>
     );
 };
 
