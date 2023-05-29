@@ -139,35 +139,29 @@ body {
     position: relative;
 }
 
-.form__date {
-    display: flex;
-    flex-direction: row;
-    gap: 0.5rem;
-}
-
-.form__date::before {
+.form__group::before {
     content: "EXP. DATE (MM/YY)";
     position: absolute;
     font-size: 0.75rem;
-    letter-spacing: 1px;
-    color: hsl(278deg 24% 15%);
-    font-weight: 700;
     transform: translate(0, -1.5rem);
+    word-spacing: 1px;
+    letter-spacing: 1px;
+
 }
 
-.form__month,
-.form__year {
+#month-input,
+#year-input {
     max-width: 76px;
     width: 100%;
     padding: 0.475rem 1rem;
     color: hsl(274deg 23% 20%);
     border-radius: .5rem;
-    border: 1px solid hsl(240deg 2% 82%);
-
+    border: 1px solid hsl(260, 3%, 81%);
 }
 
-.form__cvc input {
-    max-width: 190px;
+
+#cvc-input {
+    max-width: 205px;
     width: 96%;
     gap: 0.75rem;
     border-radius: 0.5rem;
@@ -184,7 +178,6 @@ body {
     font-size: 0.75rem;
     letter-spacing: 1px;
     color: hsl(278deg 24% 15%);
-    font-weight: 700;
     transform: translate(0.5rem, -1.5rem);
 }
 
@@ -210,7 +203,7 @@ body {
 .error::after {
     content: attr(error-after);
     position: relative;
-    color: red;
+    color: hsl(359, 73%, 74%);
     font-size: 0.875rem;
 
 }
@@ -219,18 +212,21 @@ body {
 .error-group::after {
     content: attr(error-after);
     position: absolute;
-    color: red;
+    color: hsl(359, 73%, 74%);
     font-size: 0.875rem;
-    transform: translateY(3rem);
+    bottom: 0;
+    left: 0;
+    transform: translateY(1.5rem);
 }
 
 .error-cvc::after {
     content: attr(error-after);
     position: absolute;
-    color: red;
+    color: hsl(359, 73%, 74%);
     font-size: 0.875rem;
-    right: 24%;
-    bottom: -55%;
+    bottom: -1.5rem;
+    left: 11rem;
+
 }
 
 input::placeholder {
