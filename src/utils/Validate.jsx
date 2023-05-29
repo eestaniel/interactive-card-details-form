@@ -11,13 +11,14 @@ function Validate(e) {
         if (e.id === 'month-input' || e.id === 'year-input') {
             e.parentElement.parentElement.classList.add('error-group')
             e.parentElement.parentElement.setAttribute('error-after', "Can't be blank");
-
+            hasError = true;
 
         } else if (e.id === 'cvc-input') {
             e.parentElement.classList.add('error-cvc')
+            hasError = true;
         } else {
             e.parentElement.classList.add('error');
-
+            hasError = true;
         }
 
     } else {
@@ -28,11 +29,13 @@ function Validate(e) {
                 e.style.borderColor = 'hsl(359, 39%, 58%)';
                 e.parentElement.setAttribute('error-after', "Please enter your full name");
                 e.parentElement.classList.add('error');
+                hasError = true;
             }
             if (e.validity.patternMismatch) {
                 e.style.borderColor = 'hsl(359, 39%, 58%)';
                 e.parentElement.setAttribute('error-after', "Wrong format, letters only");
                 e.parentElement.classList.add('error');
+                hasError = true;
             }
         } else if (e.id === 'number-input') {
             // Check if card number is 16 digits
@@ -40,12 +43,14 @@ function Validate(e) {
                 e.style.borderColor = 'hsl(359, 39%, 58%)';
                 e.parentElement.setAttribute('error-after', "Please enter 16 digits");
                 e.parentElement.classList.add('error');
+                hasError = true;
 
             }
             if (e.validity.patternMismatch) {
                 e.style.borderColor = 'hsl(359, 39%, 58%)';
                 e.parentElement.setAttribute('error-after', "Wrong format, numbers only");
                 e.parentElement.classList.add('error');
+                hasError = true;
 
             }
         } else if (e.id === 'month-input' || e.id === 'year-input') {
@@ -54,6 +59,7 @@ function Validate(e) {
                     e.style.borderColor = 'hsl(359, 39%, 58%)';
                     e.parentElement.parentElement.setAttribute('error-after', "Wrong format, numbers only");
                     e.parentElement.parentElement.classList.add('error-group');
+                    hasError = true;
 
                 }
             }
@@ -61,7 +67,7 @@ function Validate(e) {
                 e.style.borderColor = 'hsl(359, 39%, 58%)';
                 e.parentElement.parentElement.setAttribute('error-after', "Wrong format, numbers only");
                 e.parentElement.parentElement.add('error-group');
-
+                hasError = true;
             }
         } else if (e.id === 'cvc-input') {
 
@@ -69,10 +75,12 @@ function Validate(e) {
                 e.style.borderColor = 'hsl(359, 39%, 58%)';
                 e.parentElement.setAttribute('error-after', "Wrong format, numbers only");
                 e.parentElement.classList.add('error-cvc');
+                hasError = true;
             } else if (e.value.length < 3) {
                 e.style.borderColor = 'hsl(359, 39%, 58%)';
                 e.parentElement.setAttribute('error-after', "Please enter 3 digits");
                 e.parentElement.classList.add('error-cvc');
+                hasError = true;
 
             }
         }

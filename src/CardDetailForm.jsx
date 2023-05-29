@@ -14,6 +14,8 @@ const CardDetailForm = () => {
         cardName: '',
     });
 
+    const [isValid, setIsValid] = useState(false);
+
 
     const handleFocus = (e) => {
         e.target.parentElement.classList.remove('error');
@@ -27,14 +29,19 @@ const CardDetailForm = () => {
     };
 
     function handleFormSubmit (e) {
-        let isValid = true;
         e.preventDefault();
+        let hasError = false;
         const items = document.querySelectorAll('input')
         items.forEach(item => {
             if (Validate(item) === true) {
-                isValid = false;
+                hasError = true;
+            } else {
+                hasError = false;
             }
         })
+        if (!hasError) {
+            setIsValid(true);
+        }
     }
 
     return (
@@ -46,13 +53,23 @@ const CardDetailForm = () => {
                 monthInput={cardData.monthInput}
                 yearInput={cardData.yearInput}
             />
-            <Form
+
+            { !isValid ?
+                <Form
                 handleFormSubmit={handleFormSubmit}
                 handleFocus={handleFocus}
                 handleBlur={handleBlur}
                 cardData={cardData}
                 setCardData={setCardData}
-            />
+                />
+                :
+                <div>Valid</div>
+
+
+
+            }
+
+
         </div>
     );
 };
