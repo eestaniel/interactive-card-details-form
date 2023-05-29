@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, {useState} from 'react';
 import {isWhiteSpaces} from "eslint-plugin-react/lib/util/jsx.js";
+import Validate from "./utils/Validate.jsx";
 
 const CardDetailForm = () => {
     const [cardInputNumber, setCardInputNumber] = useState('');
@@ -22,75 +23,30 @@ const CardDetailForm = () => {
         setCardImgNumber(formattedNumber.padEnd(19, ' '));
     }
 
+
+    const handleFocus = (e) => {
+        e.target.parentElement.classList.remove('error');
+        e.target.parentElement.classList.remove('error-group');
+        e.target.parentElement.classList.remove('error-cvc');
+        e.target.style.borderColor = '#ccc';
+    }
+
+    const handleNameInputBlur = (e) => {
+        Validate(e.target);
+    };
+
+    /*
+    TODO: Fix handleClick
+     */
     /*handle onMonthChange*/
+    const handleClick = (e) => {
 
-
-    function handleClick(e) {
         e.preventDefault();
         // check if all inputs are filled
-        let monthError = false;
-        const inputs = document.querySelectorAll('input');
+        let inputs = document.querySelectorAll('input');
         inputs.forEach(input => {
-
-            // check if input is empty
-            if (input.value === '') {
-                if (input.parentElement.id === 'date') {
-                    input.parentElement.parentElement.classList.add('error-group');
-                    input.style.borderColor = 'red';
-                    input.parentElement.parentElement.setAttribute('error-after', "Can't be blank");
-                    monthError = true;
-                    return
-                } else if (input.parentElement.id === 'cvc') {
-                    input.parentElement.classList.add('error-cvc');
-                    input.style.borderColor = 'red';
-                    input.parentElement.setAttribute('error-after', "Can't be blank");
-                    return
-                } else {
-                    input.parentElement.classList.add('error');
-                    input.style.borderColor = 'red';
-                    input.parentElement.setAttribute('error-after', "Can't be blank");
-                    return
-                }
-            }
-
-            // check if input is valid
-            if (input.validity.patternMismatch) {
-                if (input.parentElement.id === 'date') {
-                    input.parentElement.parentElement.classList.add('error-group');
-                    input.style.borderColor = 'red';
-                    input.parentElement.parentElement.setAttribute('error-after', "Invalid");
-                    monthError = true;
-                    return
-                } else if (input.parentElement.id === 'cvc') {
-                    input.parentElement.classList.add('error-cvc');
-                    input.style.borderColor = 'red';
-                    input.parentElement.setAttribute('error-after', "Invalid");
-                    return
-                } else {
-                    input.parentElement.classList.add('error');
-                    input.style.borderColor = 'red';
-                    input.parentElement.setAttribute('error-after', "Wrong format, numbers only");
-                    return
-                }
-            }
-            // reset error
-            if (input.parentElement.id === 'date' && !monthError) {
-                input.parentElement.parentElement.classList.remove('error-group');
-                input.style.borderColor = '#ccc';
-                input.parentElement.parentElement.removeAttribute('error-after');
-
-            } else if (input.parentElement.id === 'cvc') {
-                input.parentElement.classList.remove('error-cvc');
-                input.style.borderColor = '#ccc';
-                input.parentElement.removeAttribute('error-after');
-
-            } else {
-                input.parentElement.classList.remove('error');
-                input.style.borderColor = '#ccc';
-                input.parentElement.removeAttribute('error-after');
-
-            }
-        });
+            Validate(input.target);
+        })
     }
 
     return (
@@ -113,22 +69,33 @@ const CardDetailForm = () => {
                         {!cardName ? 'Jane Appleseed' : cardName}
                     </div>
                     <div className="form__card-front__date" id={'card-1-date'}>
-                        {!monthInput ? '00': monthInput}
+                        {!monthInput ? '00' : monthInput}
                         /
-                        {!yearInput ? '00': yearInput}
+                        {!yearInput ? '00' : yearInput}
                     </div>
                 </div>
             </div>
             <form className={"form-container"}>
-                <label className="form__name" id={'name-label'}>
-                    <input type="text" id={'name-input'} placeholder={'e.g. Jane Appleseed'} pattern={'[a-zA-Z ]+'}
-                    onChange={e => setCardName(e.target.value)}
+                <label className={`form__name`} id="name-label">
+                    <input type="text"
+                           id={'name-input'}
+                           placeholder={'e.g. Jane Appleseed'}
+                           pattern={'[a-zA-Z ]+'}
+                           onChange={e => setCardName(e.target.value)}
+                           onFocus={event => handleFocus(event)}
+                           onBlur={event=>handleNameInputBlur(event)}
+                           //edit parent attribute error-after
+
+
                     />
                 </label>
                 <label className="form__number" id={'number-label'}>
                     <input type="text" id={'number-input'} pattern={'[0-9]+'}
                            value={cardInputNumber.replace(/(.{4})/g, '$1 ').trim()}
-                           onChange={onnumberChange} placeholder={'e.g. 0000 0000 0000 0000'}
+                           onChange={onnumberChange}
+                           placeholder={'e.g. 0000 0000 0000 0000'}
+                           onFocus={event => handleFocus(event)}
+                           onBlur={event=>handleNameInputBlur(event)}
                     />
                 </label>
                 <div className="form__group">
@@ -142,6 +109,10 @@ const CardDetailForm = () => {
                             placeholder={'MM'}
                             value={monthInput}
                             onChange={e => setMonthInput(e.target.value)}
+                            onFocus={event => handleFocus(event)}
+                            onBlur={event=>handleNameInputBlur(event)}
+
+
                         />
 
                         <input
@@ -153,15 +124,22 @@ const CardDetailForm = () => {
                             placeholder={'YY'}
                             value={yearInput}
                             onChange={e => setYearInput(e.target.value)}
+                            onFocus={event => handleFocus(event)}
+                            onBlur={event=>handleNameInputBlur(event)}
                         />
                     </label>
                     <label className="form__cvc" id={'cvc'}>
-                        <input type="text" maxLength={3} pattern={'[0-9]+'} placeholder={'e.g.123'}
+                        <input type="text"
+                               maxLength={3}
+                               pattern={'[0-9]+'}
+                               placeholder={'e.g.123'}
                                onChange={event => setCvcInput(event.target.value)}
+                               onFocus={event => handleFocus(event)}
+                               onBlur={event=>handleNameInputBlur(event)}
                         />
                     </label>
                 </div>
-                <button className="button" onClick={handleClick}>Confirm</button>
+                <button className="button" onClick={e => handleClick(e)}>Confirm</button>
             </form>
         </div>
     );
