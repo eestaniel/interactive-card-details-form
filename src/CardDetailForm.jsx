@@ -1,27 +1,14 @@
 // eslint-disable-next-line no-unused-vars
 import React, {useState} from 'react';
-import {isWhiteSpaces} from "eslint-plugin-react/lib/util/jsx.js";
 import Validate from "./utils/Validate.jsx";
 
-const CardDetailForm = () => {
-    const [cardInputNumber, setCardInputNumber] = useState('');
+
+const CardDetailForm = ({setValidForm}) => {
     const [cardImgNumber, setCardImgNumber] = useState('');
     const [monthInput, setMonthInput] = useState('');
     const [yearInput, setYearInput] = useState('');
     const [cvcInput, setCvcInput] = useState('');
     const [cardName, setCardName] = useState('');
-
-
-    /*handle onNumberChange*/
-    function onnumberChange(e) {
-        let inputValue = e.target.value.replace(/\s/g, '');
-        if (inputValue.length > 16) {
-            inputValue = inputValue.substring(0, 16);
-        }
-        setCardInputNumber(inputValue);
-        const formattedNumber = inputValue.replace(/(.{4})/g, '$1 ').trim();
-        setCardImgNumber(formattedNumber.padEnd(19, ' '));
-    }
 
 
     const handleFocus = (e) => {
@@ -38,15 +25,18 @@ const CardDetailForm = () => {
     /*
     TODO: Fix handleClick
      */
-    /*handle onMonthChange*/
-    const handleClick = (e) => {
-
+    function handleClick(e){
+        let isValid = true;
         e.preventDefault();
-        // check if all inputs are filled
-        let inputs = document.querySelectorAll('input');
-        inputs.forEach(input => {
-            Validate(input.target);
+        const items = document.querySelectorAll('input')
+        items.forEach(item => {
+            if (Validate(item) === true) {
+                isValid = false;
+            }
         })
+        setValidForm(isValid)
+
+
     }
 
     return (
@@ -62,7 +52,7 @@ const CardDetailForm = () => {
                     <div className="form__card-front__logo"></div>
                     <div className="form__card-front__number" id={'card-1-number'}>
                         {
-                            isWhiteSpaces(cardImgNumber) ? '0000 0000 0000 0000' : cardImgNumber
+                            !cardImgNumber ? '0000 0000 0000 0000' : cardImgNumber.match(/.{1,4}/g).join(' ')
                         }
                     </div>
                     <div className="form__card-front__name" id={'card-1-name'}>
@@ -90,9 +80,8 @@ const CardDetailForm = () => {
                     />
                 </label>
                 <label className="form__number" id={'number-label'}>
-                    <input type="text" id={'number-input'} pattern={'[0-9]+'}
-                           value={cardInputNumber.replace(/(.{4})/g, '$1 ').trim()}
-                           onChange={onnumberChange}
+                    <input type="text" id={'number-input'} maxLength={16} pattern={'[0-9]+'}
+                           onChange={e => setCardImgNumber(e.target.value)}
                            placeholder={'e.g. 0000 0000 0000 0000'}
                            onFocus={event => handleFocus(event)}
                            onBlur={event=>handleNameInputBlur(event)}
@@ -120,7 +109,7 @@ const CardDetailForm = () => {
                             className="form__year"
                             id={'year'}
                             maxLength={2}
-                            pattern={'[0-9]+'}
+                            pattern={'[0-9 ]+'}
                             placeholder={'YY'}
                             value={yearInput}
                             onChange={e => setYearInput(e.target.value)}
@@ -139,7 +128,7 @@ const CardDetailForm = () => {
                         />
                     </label>
                 </div>
-                <button className="button" onClick={e => handleClick(e)}>Confirm</button>
+                <button className="button" onClick={handleClick}>Confirm</button>
             </form>
         </div>
     );
