@@ -1,5 +1,8 @@
+// eslint-disable-next-line no-unused-vars
 import React from 'react';
 import FormInput from './FormInput.jsx';
+import PropTypes from 'prop-types';
+
 
 const Form = ({handleFormSubmit, handleFocus, handleBlur, cardData, setCardData}) => (
     <form className="form-container" onSubmit={handleFormSubmit}>
@@ -65,5 +68,13 @@ const Form = ({handleFormSubmit, handleFocus, handleBlur, cardData, setCardData}
         <button type="submit" className="button">Confirm</button>
     </form>
 );
+
+Form.propTypes = {
+    handleFormSubmit: PropTypes.func.isRequired,
+    handleFocus: PropTypes.func.isRequired,
+    handleBlur: PropTypes.func.isRequired,
+    cardData: PropTypes.object.isRequired,
+    setCardData: PropTypes.func.isRequired,
+}
 
 export default Form;
