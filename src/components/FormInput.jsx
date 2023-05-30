@@ -1,5 +1,3 @@
-import React from 'react';
-
 const FormInput = ({id, type, placeholder, pattern, maxLength, value, onChange, onFocus, onBlur}) => (
     <label className={`form__${id}`}>
         <input
