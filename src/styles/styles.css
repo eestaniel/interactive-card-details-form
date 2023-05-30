@@ -273,18 +273,21 @@ input::placeholder {
         grid-area: form__images;
         height: 100vh;
         max-width: 483px;
+        width: 100%;
     }
 
     .form__bg {
         background-image: url("../assets/images/bg-main-desktop.png");
         background-repeat: no-repeat;
+        width: 100%;
+
     }
 
     .form__card-back {
         width: 448px;
         height: 246px;
         background-size: contain;
-        transform: translate(10rem, 27.25rem);
+        transform: translate(15rem, 27.25rem);
     }
 
     .form__card-back__cvc {
@@ -297,7 +300,7 @@ input::placeholder {
         width: 448px;
         height: 246px;
         background-size: contain;
-        transform: translate(2rem, 4rem);
+        transform: translate(3rem, 4rem);
     }
 
     .form__card-front__logo {
