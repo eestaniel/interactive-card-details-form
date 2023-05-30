@@ -1,4 +1,6 @@
+// eslint-disable-next-line no-unused-vars
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const CardImages = ({cvcInput, cardImgNumber, cardName, monthInput, yearInput}) => (
     <div className={'grid-container'}>
@@ -28,5 +30,13 @@ const CardImages = ({cvcInput, cardImgNumber, cardName, monthInput, yearInput}) 
         </div>
     </div>
 );
+
+CardImages.propTypes = {
+    cvcInput: PropTypes.string,
+    cardImgNumber: PropTypes.string,
+    cardName: PropTypes.string,
+    monthInput: PropTypes.string,
+    yearInput: PropTypes.string,
+}
 
 export default CardImages;
