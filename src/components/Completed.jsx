@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React from 'react';
 
 const Completed = () => {
@@ -15,6 +16,7 @@ const Completed = () => {
             </svg>
 
             <h1 className="completed__header">Thank you!</h1>
+            {/* eslint-disable-next-line react/no-unescaped-entities */}
             <p className="completed__paragraph">We've added your card details</p>
 
             <button className="button">Continue</button>
