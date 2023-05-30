@@ -57,10 +57,9 @@ function Validate(e) {
             if (e.id === 'month-input') {
                 if (parseInt(e.value) < 1 || parseInt(e.value) > 12) {
                     e.style.borderColor = 'hsl(359, 39%, 58%)';
-                    e.parentElement.parentElement.setAttribute('error-after', "Wrong format, numbers only");
+                    e.parentElement.parentElement.setAttribute('error-after', "Invalid month");
                     e.parentElement.parentElement.classList.add('error-group');
                     hasError = true;
-
                 }
             }
             if (e.validity.patternMismatch) {
