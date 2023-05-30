@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import Validate from "./utils/Validate.jsx";
 import Form from './components/Form.jsx';
 import CardImages from './components/CardImages.jsx';
+import Completed from "./components/Completed.jsx";
 
 
 const CardDetailForm = () => {
@@ -18,14 +19,22 @@ const CardDetailForm = () => {
 
 
     const handleFocus = (e) => {
-        e.target.parentElement.classList.remove('error');
-        e.target.parentElement.classList.remove('error-group');
-        e.target.parentElement.classList.remove('error-cvc');
+        if (e.target.id === 'month-input' || e.target.id === 'year-input') {
+            console.log('hello')
+            e.target.parentElement.parentElement.classList.remove('error-group');
+        } else if (e.target.id === 'cvc') {
+            e.target.parentElement.classList.remove('error-cvc');
+        } else {
+            e.target.parentElement.classList.remove('error');
+        }
+
+
         e.target.style.borderColor = '#ccc';
     }
 
     const handleBlur = (e) => {
         Validate(e.target);
+
     };
 
     function handleFormSubmit (e) {
@@ -33,13 +42,9 @@ const CardDetailForm = () => {
         let hasError = false;
         const items = document.querySelectorAll('input')
         items.forEach(item => {
-            if (Validate(item) === true) {
-                hasError = true;
-            } else {
-                hasError = false;
-            }
+            hasError = Validate(item) === true;
         })
-        if (!hasError) {
+        if (hasError === false) {
             setIsValid(true);
         }
     }
@@ -63,7 +68,7 @@ const CardDetailForm = () => {
                 setCardData={setCardData}
                 />
                 :
-                <div>Valid</div>
+                <Completed />
 
 
 
