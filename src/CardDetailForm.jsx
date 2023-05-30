@@ -27,9 +27,7 @@ const CardDetailForm = () => {
         } else {
             e.target.parentElement.classList.remove('error');
         }
-
-
-        e.target.style.borderColor = '#ccc';
+        e.target.style.borderColor = 'hsl(263deg 3% 81%)';
     }
 
     const handleBlur = (e) => {
@@ -37,14 +35,18 @@ const CardDetailForm = () => {
 
     };
 
-    function handleFormSubmit (e) {
+    function handleFormSubmit(e) {
         e.preventDefault();
-        let hasError = false;
+        let hasError = 0;
         const items = document.querySelectorAll('input')
         items.forEach(item => {
-            hasError = Validate(item) === true;
+            let validateError = Validate(item);
+            if (validateError === true) {
+                hasError += 1
+            }
+
         })
-        if (hasError === false) {
+        if (hasError === 0) {
             setIsValid(true);
         }
     }
@@ -59,17 +61,16 @@ const CardDetailForm = () => {
                 yearInput={cardData.yearInput}
             />
 
-            { !isValid ?
+            {!isValid ?
                 <Form
-                handleFormSubmit={handleFormSubmit}
-                handleFocus={handleFocus}
-                handleBlur={handleBlur}
-                cardData={cardData}
-                setCardData={setCardData}
+                    handleFormSubmit={handleFormSubmit}
+                    handleFocus={handleFocus}
+                    handleBlur={handleBlur}
+                    cardData={cardData}
+                    setCardData={setCardData}
                 />
                 :
-                <Completed />
-
+                <Completed/>
 
 
             }
