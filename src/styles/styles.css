@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap');
 
 body {
     height: 100vh;
     width: 100vw;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
 }
 
 .form__images {
@@ -113,7 +116,6 @@ body {
     font-size: 0.75rem;
     letter-spacing: 1px;
     color: hsl(278deg 24% 15%);
-    font-weight: 700;
     position: absolute;
     transform: translate(0, -1.5rem);
 }
@@ -123,7 +125,6 @@ body {
     font-size: 0.75rem;
     letter-spacing: 1px;
     color: hsl(278deg 24% 15%);
-    font-weight: 700;
     position: absolute;
     transform: translate(0, -1.5rem);
 }
@@ -182,9 +183,9 @@ body {
 }
 
 .button {
-    max-width: 378px;
+    max-width: 382px;
     width: 100%;
-    padding: .8125rem;
+    padding: .615rem;
     font-size: 1.375rem;
     border-radius: .5rem;
     border: none;
@@ -231,6 +232,33 @@ body {
 
 input::placeholder {
     color: hsl(240deg 2% 82%);
+}
+
+
+/* Completed */
+.completed-container {
+    display: grid;
+    place-items: center;
+    margin-top: 5rem;
+    padding-inline: 1.5rem;
+}
+
+.completed__header {
+    text-transform: uppercase;
+    color: hsl(272, 45%, 11%);
+    letter-spacing: 3px;
+    font-weight: 100;
+    margin-top: 1.25rem;
+}
+
+.completed__paragraph {
+    font-size: 1.25rem;
+    color: hsl(270, 2%, 59%);
+    margin-top: 0.25rem;
+}
+
+.completed-container button {
+    margin-top: 1.25rem;;
 }
 
 @media (min-width: 968px) {
@@ -302,5 +330,31 @@ input::placeholder {
         margin-top: auto;
         margin-bottom: auto;
         z-index: 10;
+    }
+
+    /* Completed */
+    .completed-container {
+        display: grid;
+        place-content: center;
+        place-items: center;
+    }
+
+    .completed__header {
+        text-transform: uppercase;
+        color: hsl(272, 45%, 11%);
+        letter-spacing: 3px;
+        font-weight: 100;
+        margin-top: 1.25rem;
+    }
+
+    .completed__paragraph {
+        font-size: 1.25rem;
+        color: hsl(270, 2%, 59%);
+        margin-top: 0.25rem;
+    }
+
+    .completed-container button {
+        margin-top: 1.25rem;
+        padding-inline: 9rem;
     }
 }
