@@ -24,7 +24,7 @@ const Form = ({handleFormSubmit, handleFocus, handleBlur, cardData, setCardData}
             pattern="[0-9]+"
             maxLength={16}
             value={cardData.cardImgNumber}
-            onChange={e => setCardData({...cardData, cardImgNumber: e.target.value})}
+            onChange={e => setCardData({...cardData, cardImgNumber: e.target.value.trim()})}
             onFocus={handleFocus}
             onBlur={handleBlur}
         />
@@ -36,7 +36,7 @@ const Form = ({handleFormSubmit, handleFocus, handleBlur, cardData, setCardData}
                 pattern="[0-9]+"
                 maxLength={2}
                 value={cardData.monthInput}
-                onChange={e => setCardData({...cardData, monthInput: e.target.value})}
+                onChange={e => setCardData({...cardData, monthInput: e.target.value.trim()})}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
             />
@@ -47,7 +47,7 @@ const Form = ({handleFormSubmit, handleFocus, handleBlur, cardData, setCardData}
                 pattern="[0-9]+"
                 maxLength={2}
                 value={cardData.yearInput}
-                onChange={e => setCardData({...cardData, yearInput: e.target.value})}
+                onChange={e => setCardData({...cardData, yearInput: e.target.value.trim()})}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
             />
@@ -58,7 +58,7 @@ const Form = ({handleFormSubmit, handleFocus, handleBlur, cardData, setCardData}
                 pattern="[0-9]+"
                 maxLength={3}
                 value={cardData.cvcInput}
-                onChange={e => setCardData({...cardData, cvcInput: e.target.value})}
+                onChange={e => setCardData({...cardData, cvcInput: e.target.value.trim()})}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
             />
