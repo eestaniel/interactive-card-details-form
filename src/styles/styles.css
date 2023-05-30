@@ -84,7 +84,7 @@ body {
 .form-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, min-content);
-    place-items: center;
+    place-content: center;
     margin-top: 16vh;
     margin-inline: 1.5rem;
     gap: 2.75rem;
@@ -335,8 +335,9 @@ input::placeholder {
     /* Completed */
     .completed-container {
         display: grid;
-        place-content: center;
-        place-items: center;
+
+        place-self: center;
+        margin-right: auto;
     }
 
     .completed__header {
