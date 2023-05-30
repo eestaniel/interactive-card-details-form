@@ -234,7 +234,6 @@ input::placeholder {
     color: hsl(240deg 2% 82%);
 }
 
-
 /* Completed */
 .completed-container {
     display: grid;
@@ -259,6 +258,17 @@ input::placeholder {
 
 .completed-container button {
     margin-top: 1.25rem;;
+}
+
+.attribution {
+    font-size: 11px;
+    position: absolute;
+    bottom: 10vh;
+    left: 25vw;
+}
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
 }
 
 @media (min-width: 968px) {
@@ -360,5 +370,11 @@ input::placeholder {
     .completed-container button {
         margin-top: 1.25rem;
         padding-inline: 9rem;
+    }
+
+    .attribution {
+        font-size: 11px;
+        bottom: 10vh;
+        left: 54vw;
     }
 }

@@ -74,8 +74,11 @@ const CardDetailForm = () => {
 
 
             }
-
-
+            <div className="attribution">
+                Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank" rel="noreferrer">Frontend
+                Mentor</a>.
+                Coded by <a href="https://github.com/eestaniel" target="_blank" rel="noreferrer">Edwin Estaniel</a>.
+            </div>
         </div>
     );
 };
